@@ -1,7 +1,5 @@
 # Start Template: Gulp + WebPack + Babel
 
-Сборку делал по примеру автора [youtube](https://www.youtube.com/watch?v=jU88mLuLWlk) канала: [Фрилансер по жизни](https://www.youtube.com/c/FreelancerLifeStyle)
-
 ## Для работы используйте такие команды
 
 - Для установки всех зависимостей: `$ npm install`;
