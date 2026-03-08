@@ -1,12 +1,52 @@
 .header {
-    margin: 60px 0;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    position: relative;
     &__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 32px;
     }
     &__logo {
-        font-size: 16px;
+        width: 184px;
+        height: 16px;
+        object-fit: contain;
     }
-    &__social {}
+    &__nav {
+        flex-grow: 1;
+        ul {            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 0;
+            padding-left: 0;
+            margin-top: 0;
+            list-style: none;
+        }
+        a {
+            font-family: GrtskGiga, sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #475467;
+            font-weight: 500;
+        }
+    }
+    &__burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        width: 40px;
+        height: 40px;
+    }
+    &__burger-line {
+        width: 17px;
+        height: 2px;
+        background-color: #475467;
+        border-radius: 999px;
+    }
 }

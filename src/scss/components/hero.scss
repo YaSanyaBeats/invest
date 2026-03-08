@@ -1,84 +1,35 @@
 .hero {
-    width: 100%;
-    margin-bottom: 60px;
-    &__container {
-        display: flex;
-        justify-content: space-between;
-        gap: 40px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -64px;
+    &__content {
     }
-    &__left {
-        display: flex;
-        align-items: center;
-        gap: 40px;
+    
+    &__title {
+        font-weight: 500;
+        color: #344054;
+        margin: 0;
+        text-align: center;
     }
-    &__name-wrapper {
-        display: flex;
-        flex-direction: column;
+    
+    &__subtitle {
+        font-weight: 400;
+        color: #475467;
+        margin-top: 24px;
+        text-align: center;
     }
-    &__name {
-        font-size: 96px;
-        font-weight: bold;
-        text-align: right;
-        margin-bottom: 40px;
-        margin-top: 0;
+
+    &__gradient {
+        background: linear-gradient(0deg,rgba(52, 64, 84, 1) 12%, rgba(15, 88, 132, 1) 24%, rgba(43, 186, 196, 1) 44%, rgba(1, 109, 207, 1) 60%, rgba(2, 150, 224, 1) 74%, rgba(52, 64, 84, 1) 91%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline;
+        animation: heroGradient 4s ease-out infinite;
+        background-size: 100% 700%;
+        background-position: 0 0;
     }
-    &__nick {
-        opacity: .5;
-        font-size: 24px;
-        text-align: right;
-    }
-    &__img {
-        object-fit: contain;
-    }
-    &__right {
-        min-width: 500px;
-    }
-    &__title {}
-    &__code {
-        margin-bottom: 15px;
-    }
+    
 }
 
-@include media($laptop) {
-    .hero {
-        &__name {
-            font-size: 64px;
-        }
-        &__img {
-            width: 200px;
-            height: 200px;
-        }
-    }
-}
-
-@include media($tablet) {
-    .hero {
-        &__container {
-            flex-direction: column;
-            align-items: center;
-        }
-    }
-}
-
-@include media($mobile) {
-    .hero {
-        &__name {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        &__nick {
-            font-size: 18px;
-        }
-        &__left {
-            gap: 20px;
-        }
-        &__img {
-            width: 120px;
-            height: 120px;
-            align-self: stretch;
-        }
-        &__right {
-            min-width: 100%;
-        }
-    }
-}

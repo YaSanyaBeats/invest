@@ -1,0 +1,79 @@
+# Figma Design System Rules — invest
+
+Правила для интеграции макетов из Figma через MCP в проект invest.
+
+## 1. Token Definitions
+
+- **Путь:** `src/scss/config/vars.scss` — брейкпоинты и размеры текста.
+- **Формат:** SCSS-переменные (не CSS custom properties).
+- **Брейкпоинты (px):** `$laptop: 1440`, `$tablet: 1100`, `$mobile: 768`.
+- **Типографика:** шкала `$text-sizes` в `vars.scss`; классы `.text_<size>` и `.text_mobile-<size>` в `config/base.scss`.
+- **Цвета:** в `vars.scss` — семантические переменные для текста, кнопок, фона (см. текущий файл).
+- **Шрифты:** `src/scss/config/fonts.scss` — GrtskGiga (100–700), SFProDisplay (100–900). Пути: `../fonts/<имя>.woff2`, `.woff`.
+- **Функции:** `src/scss/config/functions.scss` — `rem($px)`, `em($px)`, `prc($pxOne, $pxTwo)` (база 16px).
+
+При переносе из Figma: цвета и размеры из макета маппить на переменные в `vars.scss` и использовать в компонентах через эти переменные.
+
+## 2. Component Library
+
+- **Разметка:** `src/html/` — фрагменты, подключаемые через `@@include()` (gulp-file-include).
+- **Стили компонентов:** `src/scss/components/` — один файл на блок (например `header.scss`, `footer.scss`).
+- **Общие блоки:** `src/scss/config/common.scss`.
+- **Архитектура:** без React/Vue; HTML-фрагменты + БЭМ-классы. Компонент = один блок/секция.
+
+При переносе из Figma: React/JSX конвертировать в статичный HTML с БЭМ-именами; Tailwind — в SCSS в соответствующем `components/<block>.scss`.
+
+## 3. Frameworks & Libraries
+
+- **Сборка:** Gulp 4 + Webpack (только JS). Команды: `gulp`, `gulp build --build`.
+- **Стилизация:** свой SCSS, normalize в `src/scss/libs/normalize.scss`.
+- **Сторонние UI:** Swiper, UIkit — в `src/static/`, подключаются в `head.html` и `script.html`.
+- **Не использовать:** Tailwind, React, Vue — если не указано иное. Не устанавливать Tailwind без явного запроса.
+
+## 4. Asset Management
+
+- **Алиас в коде:** `@img/`. В HTML и CSS при сборке заменяется на `images/` и `../images/` соответственно.
+- **Пути:** изображения — `src/images/`, сборка — `dist/images/`; шрифты — `src/fonts/` → `dist/fonts/`.
+- **Оптимизация:** imagemin, webp при `--build`; шрифты → woff2/woff через Gulp.
+
+Картинки из Figma MCP скачивать и сохранять в `src/images/`, в разметке ссылаться через `@img/...`.
+
+## 5. Icon System
+
+- **Спрайт:** иконки в `src/icons/*.svg` → задача `gulp createSvgSprite` → `dist/images/icons.svg`.
+- **Использование:** `@@include('html/helpers/svg.html', { "class": "...", "icon": "имя-символа" })`, внутри `<use xlink:href="@img/icons/icons.svg#@@icon">`.
+- **Именование:** id символа = имя файла без расширения.
+
+## 6. Styling Approach
+
+- **Методология:** БЭМ. Один SCSS-файл на блок в `components/`.
+- **Порядок в `style.scss`:** config (fonts, vars, functions, mixins, keyframes) → normalize → base → common → components.
+- **Глобальные стили:** `config/base.scss` — box-sizing, body/main, `.container` (max-width по `$laptop`, padding 0 15px), утилиты `.text_*`.
+- **Адаптивность:** миксин `@mixin media($width)` в `config/mixins.scss`; использовать `$mobile`, `$tablet`, `$laptop`.
+
+При переносе из Figma: все классы Tailwind переводить в SCSS с использованием переменных и миксинов проекта; сохранять точные значения из макета через переменные в `vars.scss` при необходимости.
+
+## 7. Project Structure
+
+- **Точка входа страницы:** `src/index.html` — подключает `html/head.html`, `html/header.html`, `main` с hero, `html/footer.html`, `html/script.html`.
+- **Секции:** каждая секция — отдельный файл в `html/` и свой файл в `scss/components/`.
+- **Паттерн:** страница = набор `@@include` секций; стили: config → common → components.
+
+## Краткая сводка путей
+
+| Назначение           | Путь                          |
+|----------------------|-------------------------------|
+| Токены               | `src/scss/config/vars.scss`   |
+| Шрифты               | `src/scss/config/fonts.scss`  |
+| Миксины/функции      | `src/scss/config/mixins.scss`, `functions.scss` |
+| База/утилиты         | `src/scss/config/base.scss`  |
+| Стили компонентов    | `src/scss/components/*.scss`  |
+| HTML-фрагменты       | `src/html/*.html`            |
+| Изображения в коде   | алиас `@img/`                |
+
+## Workflow Figma → код
+
+1. Получить контекст макета через MCP `get_design_context` (fileKey, nodeId из URL).
+2. Адаптировать под стек: HTML (gulp-file-include) + SCSS (БЭМ), без Tailwind/React.
+3. Цвета/типографику из макета вынести в `vars.scss` при первом использовании.
+4. Разметку поместить в соответствующий `src/html/...`, стили — в `src/scss/components/...`.

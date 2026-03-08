@@ -1,77 +1,112 @@
 @font-face {
-	font-family: Inika;
+	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/Inika-Bold.woff2") format("woff2"), url("../fonts/Inika-Bold.woff") format("woff");
+	src: url("../fonts/GrtskGiga-Bold.woff2") format("woff2"), url("../fonts/GrtskGiga-Bold.woff") format("woff");
 	font-weight: 700;
 	font-style: normal;
 }
 @font-face {
-	font-family: Inika;
+	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/Inika-Regular.woff2") format("woff2"), url("../fonts/Inika-Regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-}
-@font-face {
-	font-family: Inter;
-	font-display: swap;
-	src: url("../fonts/Inter-Bold.woff2") format("woff2"), url("../fonts/Inter-Bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-}
-@font-face {
-	font-family: Inter;
-	font-display: swap;
-	src: url("../fonts/Inter-Light.woff2") format("woff2"), url("../fonts/Inter-Light.woff") format("woff");
-	font-weight: 300;
-	font-style: normal;
-}
-@font-face {
-	font-family: Inter;
-	font-display: swap;
-	src: url("../fonts/Inter-Black.woff2") format("woff2"), url("../fonts/Inter-Black.woff") format("woff");
-	font-weight: 900;
-	font-style: normal;
-}
-@font-face {
-	font-family: Inter;
-	font-display: swap;
-	src: url("../fonts/Inter-ExtraLight.woff2") format("woff2"), url("../fonts/Inter-ExtraLight.woff") format("woff");
+	src: url("../fonts/GrtskGiga-Extralight.woff2") format("woff2"), url("../fonts/GrtskGiga-Extralight.woff") format("woff");
 	font-weight: 200;
 	font-style: normal;
 }
 @font-face {
-	font-family: Inter;
+	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/Inter-Regular.woff2") format("woff2"), url("../fonts/Inter-Regular.woff") format("woff");
-	font-weight: 400;
+	src: url("../fonts/GrtskGiga-Light.woff2") format("woff2"), url("../fonts/GrtskGiga-Light.woff") format("woff");
+	font-weight: 300;
 	font-style: normal;
 }
 @font-face {
-	font-family: Inter;
+	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/Inter-Medium.woff2") format("woff2"), url("../fonts/Inter-Medium.woff") format("woff");
+	src: url("../fonts/GrtskGiga-Medium.woff2") format("woff2"), url("../fonts/GrtskGiga-Medium.woff") format("woff");
 	font-weight: 500;
 	font-style: normal;
 }
 @font-face {
-	font-family: Inter;
+	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/Inter-ExtraBold.woff2") format("woff2"), url("../fonts/Inter-ExtraBold.woff") format("woff");
-	font-weight: 800;
+	src: url("../fonts/GrtskGiga-Regular.woff2") format("woff2"), url("../fonts/GrtskGiga-Regular.woff") format("woff");
+	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
-	font-family: Inter;
+	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/Inter-SemiBold.woff2") format("woff2"), url("../fonts/Inter-SemiBold.woff") format("woff");
+	src: url("../fonts/GrtskGiga-Thin.woff2") format("woff2"), url("../fonts/GrtskGiga-Thin.woff") format("woff");
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: GrtskGiga;
+	font-display: swap;
+	src: url("../fonts/GrtskGiga-Semibold.woff2") format("woff2"), url("../fonts/GrtskGiga-Semibold.woff") format("woff");
 	font-weight: 600;
 	font-style: normal;
 }
 @font-face {
-	font-family: Inter;
+	font-family: SFProDisplay;
 	font-display: swap;
-	src: url("../fonts/Inter-Thin.woff2") format("woff2"), url("../fonts/Inter-Thin.woff") format("woff");
+	src: url("../fonts/SFProDisplay-Bold.woff2") format("woff2"), url("../fonts/SFProDisplay-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Black.woff2") format("woff2"), url("../fonts/SFProDisplay-Black.woff") format("woff");
+	font-weight: 900;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Medium.woff2") format("woff2"), url("../fonts/SFProDisplay-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Light.woff2") format("woff2"), url("../fonts/SFProDisplay-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Regular.woff2") format("woff2"), url("../fonts/SFProDisplay-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Heavy.woff2") format("woff2"), url("../fonts/SFProDisplay-Heavy.woff") format("woff");
+	font-weight: 800;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Thin.woff2") format("woff2"), url("../fonts/SFProDisplay-Thin.woff") format("woff");
 	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Semibold.woff2") format("woff2"), url("../fonts/SFProDisplay-Semibold.woff") format("woff");
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: SFProDisplay;
+	font-display: swap;
+	src: url("../fonts/SFProDisplay-Ultralight.woff2") format("woff2"), url("../fonts/SFProDisplay-Ultralight.woff") format("woff");
+	font-weight: 200;
 	font-style: normal;
 }

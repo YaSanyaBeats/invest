@@ -1,89 +1,351 @@
-// Заголовки, общие БЄМ блоки и проче...
-body {
-    background: linear-gradient(to bottom, #0C0707 70%, #270909 100%);
-    font-family: 'Inter', sans-serif;
-    color: white;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: white;
-}
-
 a {
-    color: white;
     transition: .2s;
-    &:hover, &:focus {
-        color: white;
-        opacity: .7;
+    color: currentColor;
+    &:hover {
         text-decoration: none;
+        opacity: .7;
+        color: currentColor;
     }
 }
 
-.social {
-    display: flex;
-    gap: 15px;
-    &__icon {}
+body {
+    background-color: #F7F9FB;
+    font-family: SFProDisplay, sans-serif;
 }
 
-.code {
-    background: #202020;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    &__header {
-        background: #191919;
-        border-bottom: 1px solid #252525;
-        padding: 15px 20px;
-        border-radius: 20px 20px 0 0;
+.text {
+    @each $size in $text-sizes {
+        &_#{$size} {
+            font-size: #{$size}px;
+        }
     }
-    &__title {}
-    &__body {
-        background: #191919;
-        border: 1px solid #252525;
-        margin: 15px 20px;
-        padding: 10px 15px;
-        border-radius: 10px;
-        position: relative;
-        cursor: pointer;
-        &:hover {
-            .code {
-                &__copy {
-                    opacity: .6;
+
+    @media (max-width: #{$mobile}px) {
+        @each $size in $text-sizes {
+            &_mobile-#{$size} {
+                font-size: #{$size}px;
+            }
+        }
+    }
+
+    &_alt {
+        font-family: GrtskGiga, sans-serif;
+    }
+}
+
+.p {
+    @each $size in $padding-sizes {
+        &_#{$size} {
+            padding: #{$size}px;
+        }
+    }
+    @media (max-width: #{$mobile}px) {
+        @each $size in $padding-sizes {
+            &_mobile-#{$size} {
+                padding: #{$size}px;
+            }
+        }
+    }
+
+    &t {
+        @each $size in $padding-sizes {
+            &_#{$size} {
+                padding-top: #{$size}px;
+            }
+        }
+        @media (max-width: #{$mobile}px) {
+            @each $size in $padding-sizes {
+                &_mobile-#{$size} {
+                    padding-top: #{$size}px;
                 }
             }
         }
     }
-    &__text {
-        margin: 0;
-        font-size: 16px;
-        font-family: 'Inika';
+    &r {
+        @each $size in $padding-sizes {
+            &_#{$size} {
+                padding-right: #{$size}px;
+            }
+        }
+        @media (max-width: #{$mobile}px) {
+            @each $size in $padding-sizes {
+                &_mobile-#{$size} {
+                    padding-right: #{$size}px;
+                }
+            }
+        }
     }
-    &__copy {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        opacity: 0;
-        transition: .3s;
-        &:hover {
-            opacity: 1 !important;
+    &b {
+        @each $size in $padding-sizes {
+            &_#{$size} {
+                padding-bottom: #{$size}px;
+            }
+        }
+        @media (max-width: #{$mobile}px) {
+            @each $size in $padding-sizes {
+                &_mobile-#{$size} {
+                    padding-bottom: #{$size}px;
+                }
+            }
+        }
+    }
+    &l {
+        @each $size in $padding-sizes {
+            &_#{$size} {
+                padding-left: #{$size}px;
+            }
+        }
+        @media (max-width: #{$mobile}px) {
+            @each $size in $padding-sizes {
+                &_mobile-#{$size} {
+                    padding-left: #{$size}px;
+                }
+            }
         }
     }
 }
 
-main {
+@include media-min($laptop) {
+    .show_laptop {
+        display: none !important;
+    }
+}
+
+@include media-min($tablet) {
+    .show_tablet {
+        display: none !important;
+    }
+}
+
+@include media-min($mobile) {
+    .show_mobile {
+        display: none !important;
+    }
+}
+
+@include media($laptop) {
+    .hidden_laptop {
+        display: none !important;
+    }
+}
+
+@include media($tablet) {
+    .hidden_tablet {
+        display: none !important;
+    }
+}
+
+@include media($mobile) {
+    .hidden_mobile {
+        display: none !important;
+    }
+}
+
+.btn {
     display: flex;
     align-items: center;
-}
-
-.uk-notification {
-    width: 300px;
-    margin-left: -150px;
-}
-
-.uk-notification-message {
-    background-color: #191919;
+    justify-content: center;
+    gap: 4px;
+    background-color: #007DFA;
     color: white;
-    border-radius: 20px;
-    font-size: 16px;
-    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    border: none;
+    transition: .2s;
+    cursor: pointer;
+    position: relative;
+
+    height: 40px;
+    min-width: 120px;
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 20px;
+
+    &__icon {
+        // padding: 4px;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+
+    &_icon {
+        min-width: 40px;
+        padding: 10px;
+    }
+    
+    &_sm {
+        height: 32px;
+        min-width: 100px;
+        padding: 6px 16px;
+        font-size: 14px;
+        line-height: 20px;
+        & .btn__icon {
+            //padding: 2px;
+            width: 16px;
+            height: 16px;
+        }
+
+        &.btn_icon {
+            min-width: 32px;
+            padding: 8px;
+        }
+    }
+
+    &_lg {
+        height: 44px;
+        min-width: 124px;
+        padding: 12px 24px;
+        font-size: 16px;
+        line-height: 24px;
+        & .btn__icon {
+            //padding: 4px;
+        }
+
+        &.btn_icon {
+            min-width: 44px;
+            padding: 12px;
+        }
+    }
+
+    @include any-hover() {
+        background-color: #0693FF;
+        color: white;
+        opacity: 1;
+    }
+
+    &_secondary {
+        background-color: #EAECF0;
+        color: #475467;
+        @include any-hover() {
+            background-color: #D0D5DD;
+            color: #101828;
+        }
+    }
+
+    &_tertiary {
+        background-color: white;
+        color: #475467;
+        border: 1px solid #D0D5DD;
+        @include any-hover() {
+            background-color: #F2F4F7;
+            color: #101828;
+            border: 1px solid #D0D5DD;
+        }
+    }
+
+    &_dark {
+        background-color: #FFFFFF1A;
+        color: #EAECF0;
+        @include any-hover() {
+            background-color: #ffffff2d;
+            color: #EAECF0;
+        }
+    }
+
+    &_link {
+        min-width: auto;
+        height: auto;
+        gap: 2px;
+        background-color: transparent;
+        padding: 0;
+        color: #007DFA;
+        &::before {
+            content: '';
+            position: absolute;
+            right: 20px;
+            bottom: -1px;
+            width: 0;
+            height: 1px;
+            background-color: currentColor;
+            transition: .3s;
+        }
+        @include any-hover() {
+            background-color: transparent;
+            color: #0693FF;
+            
+            &::before {
+                left: 0;
+                right: 20px;
+                width: calc(100% - 20px);
+            }
+        }
+    }
+
+    &_link-gray {
+        min-width: auto;
+        height: auto;
+        gap: 2px;
+        background-color: transparent;
+        padding: 0;
+        color: #98A2B3;
+        &::before {
+            content: '';
+            position: absolute;
+            right: 20px;
+            bottom: -1px;
+            width: 0;
+            height: 1px;
+            background-color: currentColor;
+            transition: .3s;
+        }
+        @include any-hover() {
+            background-color: transparent;
+            color: #344054;
+            
+            &::before {
+                left: 0;
+                right: 20px;
+                width: calc(100% - 20px);
+            }
+        }
+    }
+    
+
+    &_disabled {
+        pointer-events: none;
+        background-color: #EAECF0;
+        color: #D0D5DD;
+    }
+}
+
+.uk-svg.svg-stroke {
+    fill: none;
+    stroke: currentColor;
+}
+
+.section-header {
+    display: flex;
+    gap: 32px;
+    padding: 96px 0 64px 0;
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        flex-grow: 1;
+    }
+    &__title {
+        margin: 0;
+        font-weight: 500;
+        color: #344054;
+    }
+    &__subtitle {
+        margin: 0;
+        color: #475467;
+    }
+    &__right {
+        display: flex;
+        align-items: end;
+    }
+    &__btn {
+        width: 160px;
+    }
+}
+
+@include media($tablet) {
+    .section-header {
+        padding: 64px 0 48px 0;
+    }
 }

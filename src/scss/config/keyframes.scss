@@ -1,0 +1,32 @@
+@keyframes heroGradient {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 100%;
+    }
+}
+
+@keyframes footerCircle {
+    from {
+        transform: translate(-50%, 80px) scale(1);
+    }
+    50% {
+        transform: translate(-50%, 40px) scale(1.1);
+    }
+    to {
+        transform: translate(-50%, 80px) scale(1);
+    }
+}
+
+@keyframes footerCircleMobile {
+    from {
+        transform: translate(-50%, 0px) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -40px) scale(1.5);
+    }
+    to {
+        transform: translate(-50%, 0px) scale(1);
+    }
+}
