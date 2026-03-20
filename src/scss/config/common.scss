@@ -344,6 +344,11 @@ body {
     }
 }
 
+.section-divider {
+    background-color: white;
+    height: 12px;
+}
+
 @include media($tablet) {
     .section-header {
         padding: 64px 0 48px 0;

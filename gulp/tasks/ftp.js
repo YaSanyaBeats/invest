@@ -13,7 +13,7 @@ const ftp = () => {
   return gulp
     .src(`${filePaths.buildFolder}/**/*.*`, {})
     .pipe(plugins.handleError('FTP'))
-    .pipe(ftpConnect.dest(`/${filePaths.ftp}/${filePaths.projectDirName}`));
+    .pipe(ftpConnect.dest(`/${filePaths.ftp}`));
 };
 
 export { ftp };

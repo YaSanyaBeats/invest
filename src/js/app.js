@@ -17,6 +17,12 @@ function initScrollspy() {
             delay: '500'
         });
     }
+
+    UIkit.scrollspy($('.footer'),  {
+        target: '.footer__bg',
+        cls: 'footer__bg_active',
+        delay: '400'
+    });
 }
 
 $( document ).ready(function() {
