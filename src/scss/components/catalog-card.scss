@@ -1,0 +1,26 @@
+.catalog-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 44px;
+    @include any-hover {
+        opacity: 1;
+        .catalog-card {
+            &__img {
+                transform: scale(1.05);
+            }
+        }
+    }
+    &__title {
+        color: #344054;
+        text-align: center;
+    }
+    &__img-wrapper {
+        overflow: hidden;
+        border-radius: 16px;
+    }
+    &__img {
+        transition: .3s;
+        aspect-ratio: 2;
+    }
+}

@@ -25,9 +25,48 @@ function initScrollspy() {
     });
 }
 
+function initMouseFollowBG() {
+    let scene = $(".commercial-hero__bg");
+    let strength = 8;
+    let currentX = 50;
+    let currentY = 50;
+    let targetX = 50;
+    let targetY = 50;
+    let rafId = null;
+
+    function lerp(a, b, t) {
+        return a + (b - a) * Math.min(t, 1);
+    }
+
+    function updatePosition() {
+        currentX = lerp(currentX, targetX, 0.08);
+        currentY = lerp(currentY, targetY, 0.08);
+        scene.css({
+            transform: `translate(${currentX}px, ${currentY}px) scale(1.2)`
+        })
+        rafId = requestAnimationFrame(updatePosition);
+    }
+
+    document.addEventListener("mousemove", function (e) {
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        targetX = 50 + (e.clientX / w - 0.5) * strength * 10;
+        targetY = 50 + (e.clientY / h - 0.5) * strength * 10;
+        if (!rafId) rafId = requestAnimationFrame(updatePosition);
+    });
+
+    document.addEventListener("mouseleave", function () {
+        targetX = 50;
+        targetY = 50;
+    });
+
+    updatePosition();
+}
+
 $( document ).ready(function() {
     window.isMobile = document.documentElement.clientWidth < 768;
     window.isTablet = document.documentElement.clientWidth < 1140;
 
     initScrollspy();
+    initMouseFollowBG();
 });

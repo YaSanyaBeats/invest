@@ -1,0 +1,49 @@
+.catalog-popular {
+    &__container {}
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 72px 32px;
+
+        & .catalog-card:first-child {
+            grid-column: 1 / -1;
+            & .catalog-card {
+                &__img {
+                    aspect-ratio: 3;
+                }
+            }
+        }
+        & .catalog-popular {
+            &__more-btn {
+                margin: -8px auto 0 auto;
+                grid-column: 1 / -1;
+            }
+        }
+    }
+    &__more-btn {
+        & .btn__icon {
+            transition: .3s;
+        }
+        @include any-hover {
+            .btn__icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+@include media($tablet) {
+    .catalog-popular {
+        &__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@include media($mobile) {
+    .catalog-popular {
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
