@@ -14,6 +14,7 @@
     &__title {
         color: #344054;
         text-align: center;
+        font-weight: 500;
     }
     &__img-wrapper {
         overflow: hidden;
@@ -22,5 +23,120 @@
     &__img {
         transition: .3s;
         aspect-ratio: 2;
+    }
+}
+
+.catalog-list-card {
+    display: flex;
+    gap: 44px;
+    &__img-wrapper {
+        overflow: hidden;
+    }
+    &__img {
+        width: 400px;
+        height: 200px;
+        border-radius: 8px;
+    }
+    &__info {
+        flex-grow: 1;
+        padding: 24px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__info-top {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    &__title {
+        color: #344054;
+        font-weight: 500;
+    }
+    &__text {
+        font-weight: 500;
+        color: #475467;
+    }
+    &__address {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        align-self: end;
+    }
+    &__address-text {
+        font-weight: 500;
+        color: #004AAD;
+    }
+    &__address-circle {
+        width: 4px;
+        height: 4px;
+        flex-shrink: 0;
+        background-color: #CFD0D2;
+        border-radius: 50%;
+    }
+}
+
+.catalog-map-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: .2s;
+    @include any-hover {
+        background-color: #F2F4F7;
+    }
+    &_active {
+        background-color: #F2F4F7;
+    }
+    &__img {
+        border-radius: 4px;
+        width: 56px;
+        height: 64px;
+    }
+    &__info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    &__title {
+        font-weight: 500;
+        color: #475467;
+    }
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+    &__text {
+        font-weight: 500;
+        color: #667085;
+    }
+    &__address {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        gap: 6px;
+    }
+    &__address-text {
+        font-weight: 500;
+        color: #004AAD
+    }
+    &__address-circle {
+        width: 4px;
+        height: 4px;
+        flex-shrink: 0;
+        background-color: #CFD0D2;
+        border-radius: 50%;
+    }
+}
+
+
+@include media($mobile) {
+    .catalog-card {
+        gap: 32px;
     }
 }

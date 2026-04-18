@@ -18,6 +18,7 @@
 
 /** БЕМ блоки используемые во всё проекте */
 @import 'config/common';
+@import 'config/scrollbar';
 
 /** Подключение стилей отдельных блоков и секций */
 @import 'components/header';
@@ -30,3 +31,4 @@
 @import 'components/catalog-popular';
 @import 'components/catalog-card';
 @import 'components/cta-gradient';
+@import 'components/catalog';
