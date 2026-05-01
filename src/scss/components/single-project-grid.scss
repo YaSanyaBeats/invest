@@ -1,0 +1,44 @@
+.single-project-grid {
+    background-color: white;
+    &__container {}
+    &__grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    &__row {
+        display: flex;
+        gap: 12px;
+    }
+    &__img-wrapper {
+        flex: 1 1 50%;
+        overflow: hidden;
+    }
+    &__img {
+        aspect-ratio: 1;
+        object-fit: cover;
+    }
+    &__info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1 1 50%;
+        background-color: #F7F9FB;
+    }
+    &__title {
+        font-weight: 500;
+        background: linear-gradient(90deg, #00234F 0%, #337CBF 100%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        &_second {
+            background: linear-gradient(90deg, #4C0F19 0%, #AD717B 100%);
+            background-clip: text;
+        }
+    }
+    &__btn {
+
+    }
+}

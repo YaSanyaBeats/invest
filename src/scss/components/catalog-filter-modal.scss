@@ -1,0 +1,40 @@
+.location-filter {
+    &__match {
+        background: rgb(226, 226, 226);
+        color: inherit;
+        font: inherit;
+        font-weight: inherit;
+        padding: 0;
+    }
+
+    &__empty {
+        margin: 16px 0 0;
+        color: #98a2b3;
+
+        &_hidden {
+            display: none;
+        }
+    }
+}
+
+.catalog-filter-modal {
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: start;
+        padding-bottom: 32px;
+    }
+    &__title {
+        font-weight: 500;
+        color: #344054;
+    }
+    &__reset {
+        color: #D0D5DD !important;
+        font-weight: 500;
+    }
+    &__btn {
+        margin-top: 32px;
+        width: 100%;
+    }
+}

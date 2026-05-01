@@ -8,6 +8,13 @@
 @font-face {
 	font-family: GrtskGiga;
 	font-display: swap;
+	src: url("../fonts/GrtskGiga-Light.woff2") format("woff2"), url("../fonts/GrtskGiga-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: GrtskGiga;
+	font-display: swap;
 	src: url("../fonts/GrtskGiga-Extralight.woff2") format("woff2"), url("../fonts/GrtskGiga-Extralight.woff") format("woff");
 	font-weight: 200;
 	font-style: normal;
@@ -15,8 +22,8 @@
 @font-face {
 	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/GrtskGiga-Light.woff2") format("woff2"), url("../fonts/GrtskGiga-Light.woff") format("woff");
-	font-weight: 300;
+	src: url("../fonts/GrtskGiga-Semibold.woff2") format("woff2"), url("../fonts/GrtskGiga-Semibold.woff") format("woff");
+	font-weight: 600;
 	font-style: normal;
 }
 @font-face {
@@ -29,13 +36,6 @@
 @font-face {
 	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/GrtskGiga-Regular.woff2") format("woff2"), url("../fonts/GrtskGiga-Regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-}
-@font-face {
-	font-family: GrtskGiga;
-	font-display: swap;
 	src: url("../fonts/GrtskGiga-Thin.woff2") format("woff2"), url("../fonts/GrtskGiga-Thin.woff") format("woff");
 	font-weight: 100;
 	font-style: normal;
@@ -43,70 +43,70 @@
 @font-face {
 	font-family: GrtskGiga;
 	font-display: swap;
-	src: url("../fonts/GrtskGiga-Semibold.woff2") format("woff2"), url("../fonts/GrtskGiga-Semibold.woff") format("woff");
-	font-weight: 600;
-	font-style: normal;
-}
-@font-face {
-	font-family: SFProDisplay;
-	font-display: swap;
-	src: url("../fonts/SFProDisplay-Bold.woff2") format("woff2"), url("../fonts/SFProDisplay-Bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-}
-@font-face {
-	font-family: SFProDisplay;
-	font-display: swap;
-	src: url("../fonts/SFProDisplay-Black.woff2") format("woff2"), url("../fonts/SFProDisplay-Black.woff") format("woff");
-	font-weight: 900;
-	font-style: normal;
-}
-@font-face {
-	font-family: SFProDisplay;
-	font-display: swap;
-	src: url("../fonts/SFProDisplay-Medium.woff2") format("woff2"), url("../fonts/SFProDisplay-Medium.woff") format("woff");
-	font-weight: 500;
-	font-style: normal;
-}
-@font-face {
-	font-family: SFProDisplay;
-	font-display: swap;
-	src: url("../fonts/SFProDisplay-Light.woff2") format("woff2"), url("../fonts/SFProDisplay-Light.woff") format("woff");
-	font-weight: 300;
-	font-style: normal;
-}
-@font-face {
-	font-family: SFProDisplay;
-	font-display: swap;
-	src: url("../fonts/SFProDisplay-Regular.woff2") format("woff2"), url("../fonts/SFProDisplay-Regular.woff") format("woff");
+	src: url("../fonts/GrtskGiga-Regular.woff2") format("woff2"), url("../fonts/GrtskGiga-Regular.woff") format("woff");
 	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
-	font-family: SFProDisplay;
+	font-family: Roboto;
 	font-display: swap;
-	src: url("../fonts/SFProDisplay-Heavy.woff2") format("woff2"), url("../fonts/SFProDisplay-Heavy.woff") format("woff");
+	src: url("../fonts/Roboto-ExtraBold.woff2") format("woff2"), url("../fonts/Roboto-ExtraBold.woff") format("woff");
 	font-weight: 800;
 	font-style: normal;
 }
 @font-face {
-	font-family: SFProDisplay;
+	font-family: Roboto;
 	font-display: swap;
-	src: url("../fonts/SFProDisplay-Thin.woff2") format("woff2"), url("../fonts/SFProDisplay-Thin.woff") format("woff");
-	font-weight: 100;
+	src: url("../fonts/Roboto-Bold.woff2") format("woff2"), url("../fonts/Roboto-Bold.woff") format("woff");
+	font-weight: 700;
 	font-style: normal;
 }
 @font-face {
-	font-family: SFProDisplay;
+	font-family: Roboto;
 	font-display: swap;
-	src: url("../fonts/SFProDisplay-Semibold.woff2") format("woff2"), url("../fonts/SFProDisplay-Semibold.woff") format("woff");
+	src: url("../fonts/Roboto-Black.woff2") format("woff2"), url("../fonts/Roboto-Black.woff") format("woff");
+	font-weight: 900;
+	font-style: normal;
+}
+@font-face {
+	font-family: Roboto;
+	font-display: swap;
+	src: url("../fonts/Roboto-Medium.woff2") format("woff2"), url("../fonts/Roboto-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+	font-family: Roboto;
+	font-display: swap;
+	src: url("../fonts/Roboto-ExtraLight.woff2") format("woff2"), url("../fonts/Roboto-ExtraLight.woff") format("woff");
+	font-weight: 200;
+	font-style: normal;
+}
+@font-face {
+	font-family: Roboto;
+	font-display: swap;
+	src: url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Roboto;
+	font-display: swap;
+	src: url("../fonts/Roboto-Light.woff2") format("woff2"), url("../fonts/Roboto-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: Roboto;
+	font-display: swap;
+	src: url("../fonts/Roboto-SemiBold.woff2") format("woff2"), url("../fonts/Roboto-SemiBold.woff") format("woff");
 	font-weight: 600;
 	font-style: normal;
 }
 @font-face {
-	font-family: SFProDisplay;
+	font-family: Roboto;
 	font-display: swap;
-	src: url("../fonts/SFProDisplay-Ultralight.woff2") format("woff2"), url("../fonts/SFProDisplay-Ultralight.woff") format("woff");
-	font-weight: 200;
+	src: url("../fonts/Roboto-Thin.woff2") format("woff2"), url("../fonts/Roboto-Thin.woff") format("woff");
+	font-weight: 100;
 	font-style: normal;
 }

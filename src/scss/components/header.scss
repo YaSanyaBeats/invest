@@ -4,6 +4,11 @@
     height: 64px;
     position: relative;
     z-index: 100;
+    transition: .3s;
+    &.uk-sticky-below {
+        background-color: #FFFFFF99;
+        backdrop-filter: blur(20px);
+    }
     &__container {
         display: flex;
         justify-content: space-between;
@@ -11,7 +16,7 @@
         gap: 32px;
     }
     &__logo {
-        width: 184px;
+        width: 154px;
         height: 16px;
         object-fit: contain;
     }
@@ -29,7 +34,7 @@
         }
         a {
             font-family: GrtskGiga, sans-serif;
-            font-size: 12px;
+            font-size: 10px;
             text-transform: uppercase;
             color: #475467;
             font-weight: 500;

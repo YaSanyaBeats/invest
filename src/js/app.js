@@ -1,3 +1,11 @@
+function initAccordions() {
+    UIkit.accordion($('.catalog-filter-modal__accordion'), {
+        content: '> .filter-group__content',
+        toggle: '> .filter-group__head',
+        multiple: true
+    });
+}
+
 function initScrollspy() {
     if(window.isMobile) {
         UIkit.scrollspy($('.services__card'),  {
@@ -303,6 +311,29 @@ function initCatalogMapCardsInteractions() {
     });
 }
 
+var yandexClusterScriptPromise = null;
+
+function loadYandexClusterScript() {
+    if (self['@yandex/ymaps3-clusterer']) {
+        return Promise.resolve();
+    }
+    if (yandexClusterScriptPromise) {
+        return yandexClusterScriptPromise;
+    }
+    yandexClusterScriptPromise = new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = 'static/yandex-cluster.js';
+        script.onload = function () {
+            resolve();
+        };
+        script.onerror = function () {
+            reject(new Error('yandex-cluster.js failed to load'));
+        };
+        document.head.appendChild(script);
+    });
+    return yandexClusterScriptPromise;
+}
+
 function boundsFromCoordinatesList(coordsList) {
     let minLng = Infinity;
     let minLat = Infinity;
@@ -318,14 +349,35 @@ function boundsFromCoordinatesList(coordsList) {
 }
 
 function initCatalogYandexMap(container) {
-    if (!container || typeof ymaps3 === 'undefined') return;
+    if (!container) return;
     if (container.getAttribute('data-y-map-inited') === '1') return;
     container.setAttribute('data-y-map-inited', '1');
 
     (async function () {
         try {
+            if (typeof ymaps3 === 'undefined') {
+                await new Promise(function (resolve) {
+                    var n = 0;
+                    var t = setInterval(function () {
+                        if (typeof ymaps3 !== 'undefined' || n++ > 200) {
+                            clearInterval(t);
+                            resolve();
+                        }
+                    }, 50);
+                });
+            }
+            if (typeof ymaps3 === 'undefined') {
+                container.removeAttribute('data-y-map-inited');
+                return;
+            }
+
             await ymaps3.ready;
             if (!container.isConnected) return;
+
+            await loadYandexClusterScript();
+            if (!self['@yandex/ymaps3-clusterer']) {
+                throw new Error('@yandex/ymaps3-clusterer is missing after load');
+            }
 
             const { YMapClusterer, clusterByGrid } = self['@yandex/ymaps3-clusterer'];
             const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker } = ymaps3;
@@ -477,16 +529,162 @@ async function updateCatalog($from) {
     }
 }
 
+function initRangeInputs() {
+    $(".range__input").each(function() {
+        let $range = $(this);
+        let $inputFrom = $($(this).data('input-from'));
+        let $inputTo = $($(this).data('input-to'));
+        let instance;
+        let min = $(this).data('min');
+        let max = $(this).data('max');
+        let from = $(this).data('from');
+        let to = $(this).data('to');
+
+        $(".range__input").ionRangeSlider({
+            skin: "round",
+            hide_min_max: true,
+            hide_from_to: true,
+            extra_classes: 'range_style',
+            onStart: updateInputs,
+            onChange: updateInputs,
+            onFinish: updateInputs
+        });
+
+        function updateInputs(data) {
+            console.log(data);
+            from = data.from;
+            to = data.to;
+        
+            $inputFrom.prop("value", from);
+            $inputTo.prop("value", to);
+        }
+
+        instance = $range.data("ionRangeSlider");
+        
+        $inputFrom.on("change", function () {
+            var val = $(this).prop("value");
+        
+            // validate
+            if (val < min) {
+                val = min;
+            } else if (val > to) {
+                val = to;
+            }
+        
+            instance.update({
+                from: val
+            });
+        
+            $(this).prop("value", val);
+        
+        });
+        
+        $inputTo.on("change", function () {
+            var val = $(this).prop("value");
+        
+            // validate
+            if (val < from) {
+                val = from;
+            } else if (val > max) {
+                val = max;
+            }
+        
+            instance.update({
+                to: val
+            });
+        
+            $(this).prop("value", val);
+        });
+    })
+}
+
+function initLocationFilter() {
+    function escapeHtml(s) {
+        return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+    
+    function renderLabelHighlight($textEl, plain, qRaw) {
+        const q = String(qRaw || '').trim();
+        if (!q) {
+            $textEl.text(plain);
+            return;
+        }
+        const i = plain.toLowerCase().indexOf(q.toLowerCase());
+        if (i < 0) {
+            $textEl.text(plain);
+            return;
+        }
+        const before = escapeHtml(plain.slice(0, i));
+        const mid = escapeHtml(plain.slice(i, i + q.length));
+        const after = escapeHtml(plain.slice(i + q.length));
+        $textEl.html(before + '<mark class="location-filter__match">' + mid + '</mark>' + after);
+    }
+
+    $('.location-filter').each(function () {
+        const $root = $(this);
+        const $switcherInput = $root.find('.location-filter__switcher .switcher__input');
+        const $searchInput = $root.find('.location-filter__search .search__input');
+        const $items = $root.find('.location-filter__checkboxes .location__checkbox');
+        const $empty = $root.find('.location-filter__empty');
+
+        function applyFilter() {
+            const type = String($switcherInput.val() || 'metro');
+            const qRaw = String($searchInput.val() || '').trim();
+            const q = qRaw.toLowerCase();
+            let visibleCount = 0;
+
+            $items.each(function () {
+                const $label = $(this);
+                const $textEl = $label.find('.checkbox__text');
+                if ($textEl.data('plain') == null) {
+                    $textEl.data('plain', $textEl.text());
+                }
+                const plain = $textEl.data('plain');
+                const itemType = $label.attr('data-type') || '';
+                const textLower = plain.toLowerCase();
+                const byType = itemType === type;
+                const bySearch = !q || textLower.indexOf(q) !== -1;
+                const visible = byType && bySearch;
+
+                if (!visible) {
+                    $textEl.text(plain);
+                    $label.hide();
+                } else {
+                    visibleCount++;
+                    $label.show();
+                    renderLabelHighlight($textEl, plain, qRaw);
+                }
+            });
+
+            const showEmpty = visibleCount === 0 && q.length > 0;
+            $empty.toggleClass('location-filter__empty_hidden', !showEmpty);
+        }
+
+        $searchInput.on('input', applyFilter);
+        $switcherInput.on('switch', function () {
+            applyFilter();
+        });
+        applyFilter();
+    });
+}
+
 $( document ).ready(function() {
     window.isMobile = document.documentElement.clientWidth < 768;
     window.isTablet = document.documentElement.clientWidth < 1140;
 
+    initAccordions();
     initScrollspy();
     initMouseFollowBG();
     initSwitchers();
     initSimpleChangers();
     initCatalogFilters();
     initCatalogMapCardsInteractions();
+    initRangeInputs();
+    initLocationFilter();
 
     const initialCatalogMap = document.querySelector('.catalog__content .catalog__map-map');
     initCatalogYandexMap(initialCatalogMap);

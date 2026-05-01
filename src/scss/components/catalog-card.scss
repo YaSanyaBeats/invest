@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 44px;
+    gap: 30px;
     @include any-hover {
         opacity: 1;
         .catalog-card {
@@ -17,12 +17,12 @@
         font-weight: 500;
     }
     &__img-wrapper {
-        overflow: hidden;
-        border-radius: 16px;
+        
     }
     &__img {
         transition: .3s;
         aspect-ratio: 2;
+        border-radius: 8px;
     }
 }
 

@@ -10,7 +10,11 @@ a {
 
 body {
     background-color: #F7F9FB;
-    font-family: SFProDisplay, sans-serif;
+    font-family: Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Roboto, sans-serif;
 }
 
 .text {
@@ -242,7 +246,7 @@ body {
     gap: 4px;
     background-color: #007DFA;
     color: white;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     border-radius: 9999px;
     flex-shrink: 0;
@@ -436,6 +440,9 @@ body {
     &__btn {
         width: 160px;
     }
+    &__text {
+        color: #475467;
+    }
 }
 
 .section-divider {
@@ -471,6 +478,7 @@ body {
         cursor: pointer;
         color: #344054;
         user-select: none;
+        text-align: center;
         @include any-hover {
             opacity: .7;
         }
@@ -479,6 +487,202 @@ body {
         }
     }
 }
+
+
+.uk-offcanvas-bar {
+    background-color: white;
+    color: #344054;
+    a {
+        color: inherit;
+        &:hover {
+            color: inherit;
+        }
+    }
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 0;
+    }
+    &__title {
+        font-weight: 500;
+        color: #344054;
+        flex-grow: 1;
+    }
+    &__icon {
+        flex-shrink: 0;
+        transition: .3s;
+    }
+    &.uk-open {
+        .filter-group {
+            &__icon {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+    &__content {
+        padding-top: 4px;
+        padding-bottom: 32px;
+    }
+    .switcher {
+        width: 100%;
+        .switcher__item {
+            flex-grow: 1;
+        }
+    }
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    @include any-hover {
+        opacity: .8;
+    }
+    &__input {
+        display: none;
+        &:checked {
+            ~ .radio {
+                &__fake-input {
+                    border-color: #344054;
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    &__fake-input {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        border: 1px solid #D0D5DD;
+        position: relative;
+        transition: .1s;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #344054;
+            opacity: 0;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            transition: .1s;
+        }
+    }
+    &__text {}
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+    &__field {
+        display: flex;
+        align-items: center;
+        border: 1px solid #D0D5DD;
+        background-color: white;
+        border-radius: 8px;
+    }
+    &__prefix {
+        flex-shrink: 0;
+        color: #D0D5DD;
+        padding: 10px 0 10px 14px;
+    }
+    &__input {
+        flex: 1 1 auto;
+        width: 10px;
+        color: #344054;
+        padding: 8px;
+        border: none;
+    }
+    &__postfix {
+        flex-shrink: 0;
+        color: #667085;
+        padding: 10px 14px 10px 0;
+    }
+    &__error {
+        color: #F04438;
+    }
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    @include any-hover {
+        opacity: .8;
+    }
+    &__input {
+        display: none;
+        &:checked {
+            ~ .checkbox {
+                &__fake-input {
+                    background-color: #101828;
+                    border-color: #101828;
+                }
+            }
+        }
+    }
+    &__fake-input {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        border: 1px solid #D0D5DD;
+        transition: .1s;
+        border-radius: 4px;
+    }
+    &__text {}
+}
+
+.range {
+    display: flex;
+    flex-direction: column;
+    &__default-input-group {
+        display: flex;
+        gap: 12px;
+    }
+    &__input {}
+    &_style {
+        .irs-handle {
+            border-width: 2px;
+            border-color: #007DFA;
+        }
+        .irs-bar {
+            background-color: #007DFA;
+        }
+    }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EAECF0;
+    &__input {
+        border: none;
+        padding: 10px;
+        flex-grow: 1;
+        &:focus {
+            outline: none;
+        }
+    }
+    &__icon {
+        color: #667085;
+    }
+}
+
 
 @include media($mobile) {
     .switcher {

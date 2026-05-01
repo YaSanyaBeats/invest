@@ -1,0 +1,34 @@
+<section class="catalog-layouts">
+    <div class="catalog-layouts__container container">
+        <div class="section-header">
+            <div class="section-header__left">
+                <h2 class="section-header__title text_64-30">Investment Spaces</h2>
+            </div>
+        </div>
+        <form class="catalog__filters">
+            <div class="catalog__filters-row">
+                <div class="switcher text_14">
+                    <span class="switcher__thumb"></span>
+                    <div class="switcher__item switcher__item_active" data-switch="Developers">Developers</div>
+                    <div class="switcher__item" data-switch="Owners">Owners</div>
+                    <input type="hidden" name="type" class="switcher__input">
+                </div>
+            </div>
+            <div class="catalog__filters-row">
+                <div class="catalog__filters-select-group dropdown">
+                    <button class="dropdown__btn" type="button">
+                        <div class="dropdown__text">Цена</div>
+                        <img src="@img/icons/chevron-down.svg" class="dropdown__icon svg-stroke" uk-svg>
+                    </button>
+                    <div class="dropdown__content" uk-dropdown="mode: click">
+                        123
+                    </div>
+                </div>
+                <button class="btn btn_tertiary">
+                    <img src="@img/icons/windows.svg" class="btn__icon">
+                    Все фильтры
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,8 +1,12 @@
-<section class="cta-gradient">
+<section class="cta-gradient @@class">
     <div class="container cta-gradient__container">
-        <h2 class="cta-gradient__title text_48 text_mobile-36">Real Estate</h2>
-        <div class="cta-gradient__text text_30 text_mobile-20">The World’s Second-Largest Asset Class</div>
+        <h2 class="cta-gradient__title text_48 text_mobile-36">@@title</h2>
+        @@if (context.text) {
+            <div class="cta-gradient__text text_30 text_mobile-20">@@text</div>
+        }
         <button class="btn cta-gradient__btn">More</button>
     </div>
+    <div class="cta-gradient__gradient"></div>
     <img src="@img/cta-gradient.jpg" class="cta-gradient__img">
+    
 </section>

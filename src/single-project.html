@@ -7,15 +7,17 @@
         @@include('html/header.html', {})
 
         <main class="main">
-            @@include('html/commercial-hero.html', {})
-            @@include('html/catalog-popular.html', {})
+            @@include('html/fullscreen-img.html', {
+                'img': '@img/single-project1.jpg'
+            })
+            @@include('html/single-project-grid.html', {})
             @@include('html/cta-gradient.html', {
-                'title': 'Real Estate',
-                'text': 'The World’s Second-Largest Asset Class'
+                'class': 'cta-gradient_gradient',
+                'title': 'One. Nothing more',
             })
         </main>
 
         @@include('html/footer.html', {})
         @@include('html/script.html', {})
     </body>
-</html> 
+</html>

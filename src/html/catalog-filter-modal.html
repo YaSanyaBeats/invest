@@ -1,0 +1,189 @@
+<div class="catalog-filter-modal" id="catalog-filter-modal" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+        <div class="catalog-filter-modal__head">
+            <div class="catalog-filter-modal__title text_30-24">Фильтры</div>
+            <a href="#" class="catalog-filter-modal__reset text_12">Сбросить все</a>
+        </div>
+
+        <form class="catalog-filter-modal__form">
+            <div class="filter-group">
+                <div class="filter-group__head">
+                    <div class="filter-group__title text_16">Вид</div>
+                </div>
+                <div class="filter-group__content">
+                    <label class="radio text_14">
+                        <input type="radio" name="view" class="radio__input">
+                        <div class="radio__fake-input"></div>
+                        <div class="radio__text">Карточки</div>
+                    </label>
+                    <label class="radio mt_12 text_14">
+                        <input type="radio" name="view" class="radio__input">
+                        <div class="radio__fake-input"></div>
+                        <div class="radio__text">Список</div>
+                    </label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-group__head">
+                    <div class="filter-group__title text_16">Сортировать</div>
+                </div>
+                <div class="filter-group__content">
+                    <label class="radio text_14">
+                        <input type="radio" name="sort" class="radio__input">
+                        <div class="radio__fake-input"></div>
+                        <div class="radio__text">Сначала дешевле</div>
+                    </label>
+                    <label class="radio mt_12 text_14">
+                        <input type="radio" name="sort" class="radio__input">
+                        <div class="radio__fake-input"></div>
+                        <div class="radio__text">Сначала дороже</div>
+                    </label>
+                    <label class="radio mt_12 text_14">
+                        <input type="radio" name="sort" class="radio__input">
+                        <div class="radio__fake-input"></div>
+                        <div class="radio__text">C большей площадью</div>
+                    </label>
+                    <label class="radio mt_12 text_14">
+                        <input type="radio" name="sort" class="radio__input">
+                        <div class="radio__fake-input"></div>
+                        <div class="radio__text">C меньшей площадью</div>
+                    </label>
+                </div>
+            </div>
+            <div class="catalog-filter-modal__accordion">
+                <div class="catalog-filter-modal__group filter-group">
+                    <a href="#" class="filter-group__head">
+                        <div class="filter-group__title text_16">Локация</div>
+                        <img src="@img/icons/chevron-down.svg" class="filter-group__icon">
+                    </a>
+                    <div class="filter-group__content location-filter">
+                        <div class="switcher text_14 location-filter__switcher">
+                            <span class="switcher__thumb"></span>
+                            <div class="switcher__item switcher__item_active" data-switch="metro">Метро</div>
+                            <div class="switcher__item" data-switch="district">Район</div>
+                            <input type="hidden" name="type" class="switcher__input">
+                        </div>
+
+                        <div class="search mt_20 location-filter__search">
+                            <img src="@img/icons/search.svg" class="search__icon svg-stroke" uk-svg>
+                            <input type="text" class="search__input" placeholder="Найти">
+                        </div>
+
+                        <div class="location-filter__checkboxes">
+                            <label class="checkbox location__checkbox mt_20 text_14" data-value="Воронцовская" data-type="metro">
+                                <input type="checkbox" name="location[]" class="checkbox__input">
+                                <div class="checkbox__fake-input"></div>
+                                <div class="checkbox__text">Воронцовская</div>
+                            </label>
+                            <label class="checkbox location__checkbox mt_12 text_14" data-value="Калужуская" data-type="metro">
+                                <input type="checkbox" name="location[]" class="checkbox__input">
+                                <div class="checkbox__fake-input"></div>
+                                <div class="checkbox__text">Калужуская</div>
+                            </label>
+                            <label class="checkbox location__checkbox mt_12 text_14" data-value="Площадь Ильича" data-type="metro">
+                                <input type="checkbox" name="location[]" class="checkbox__input">
+                                <div class="checkbox__fake-input"></div>
+                                <div class="checkbox__text">Площадь Ильича</div>
+                            </label>
+                            <label class="checkbox location__checkbox mt_12 text_14" data-value="Калужуская" data-type="district">
+                                <input type="checkbox" name="location[]" class="checkbox__input">
+                                <div class="checkbox__fake-input"></div>
+                                <div class="checkbox__text">Серп и Молот</div>
+                            </label>
+                            <label class="checkbox location__checkbox mt_12 text_14" data-value="Площадь Ильича" data-type="district">
+                                <input type="checkbox" name="location[]" class="checkbox__input">
+                                <div class="checkbox__fake-input"></div>
+                                <div class="checkbox__text">Сокольники</div>
+                            </label>
+
+                            <div class="location-filter__empty location-filter__empty_hidden text_14">По вашему запросу ничего не найдено</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog-filter-modal__group filter-group">
+                    <a href="#" class="filter-group__head">
+                        <div class="filter-group__title text_16">Площадь</div>
+                        <img src="@img/icons/chevron-down.svg" class="filter-group__icon">
+                    </a>
+                    <div class="filter-group__content">
+                        <div class="range">
+                            <div class="range__default-input-group">
+                                <div class="input text_14">
+                                    <div class="input__field">
+                                        <div class="input__prefix">от</div>
+                                        <input type="text" name="square-min" id="square-min" class="input__input">
+                                        <div class="input__postfix">млн ₽</div>
+                                    </div>
+                                </div>
+                                <div class="input text_14">
+                                    <div class="input__field">
+                                        <div class="input__prefix">до</div>
+                                        <input type="text" name="square-max" id="square-max" class="input__input">
+                                        <div class="input__postfix">млн ₽</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="text" class="range__input" name="square"
+                                data-type="double"
+                                data-min="0"
+                                data-max="1000"
+                                data-from="200"
+                                data-to="500"
+                                data-input-from="#square-min"
+                                data-input-to="#square-max"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog-filter-modal__group filter-group">
+                    <a href="#" class="filter-group__head">
+                        <div class="filter-group__title text_16">Цена</div>
+                        <img src="@img/icons/chevron-down.svg" class="filter-group__icon">
+                    </a>
+                    <div class="filter-group__content">
+                        3g4regrerehg
+                    </div>
+                </div>
+
+                <div class="catalog-filter-modal__group filter-group">
+                    <a href="#" class="filter-group__head">
+                        <div class="filter-group__title text_16">Проект</div>
+                        <img src="@img/icons/chevron-down.svg" class="filter-group__icon">
+                    </a>
+                    <div class="filter-group__content">
+                        3g4regrerehg
+                    </div>
+                </div>
+                <div class="catalog-filter-modal__group filter-group">
+                    <a href="#" class="filter-group__head">
+                        <div class="filter-group__title text_16">Класс объекта</div>
+                        <img src="@img/icons/chevron-down.svg" class="filter-group__icon">
+                    </a>
+                    <div class="filter-group__content">
+                        3g4regrerehg
+                    </div>
+                </div>
+                <div class="catalog-filter-modal__group filter-group">
+                    <a href="#" class="filter-group__head">
+                        <div class="filter-group__title text_16">Отделка</div>
+                        <img src="@img/icons/chevron-down.svg" class="filter-group__icon">
+                    </a>
+                    <div class="filter-group__content">
+                        3g4regrerehg
+                    </div>
+                </div>
+                <div class="catalog-filter-modal__group filter-group">
+                    <a href="#" class="filter-group__head">
+                        <div class="filter-group__title text_16">Срок сдачи</div>
+                        <img src="@img/icons/chevron-down.svg" class="filter-group__icon">
+                    </a>
+                    <div class="filter-group__content">
+                        3g4regrerehg
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn catalog-filter-modal__btn">Показать 270 объектов</button>
+        </form>
+    </div>
+</div>
